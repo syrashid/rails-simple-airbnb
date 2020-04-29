@@ -32,7 +32,7 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat.destroy
-    redirect
+    redirect_to flats_path
   end
 
   private
