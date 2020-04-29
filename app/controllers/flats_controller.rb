@@ -8,7 +8,7 @@ class FlatsController < ApplicationController
     else
       @flats = Flat.all
     end
-
+    # TODO Learn how to take a note
   end
 
   def show; end
