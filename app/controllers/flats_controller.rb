@@ -2,12 +2,13 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:search_query] && !params[:search_query].empty?
+    if params[:search_query].present?
+      @placeholder = params[:search_query]
       @flats = Flat.where("name like ?", "%#{params[:search_query]}%")
     else
       @flats = Flat.all
     end
-    @placeholder = params[:search_query]
+
   end
 
   def show; end
@@ -43,7 +44,7 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests)
+    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests, :picture_url)
   end
 
   def set_flat
